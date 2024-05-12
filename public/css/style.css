@@ -2,6 +2,9 @@ body {
 	background-color: lightyellow;
 	margin : 20px;
 }
+a {
+    text-decoration:none;
+}
 header{
 	border:1px solid red;
 	text-align: center;

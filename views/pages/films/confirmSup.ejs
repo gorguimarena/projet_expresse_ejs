@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include ('../../partials/head.ejs') %>
+
+</head>
+<body>
+
+	<!-- entete de la page -->
+	<header>
+		<%- include ('../../partials/header.ejs') %>
+	</header>
+
+	<!-- le navbar de la page -->
+	<nav>
+		<%- include ('../../partials/nav.ejs') %>
+
+	</nav>
+
+	<!-- le contenu -->
+	<main>
+		<h3><%= title %></h3>
+
+		<div>
+			<article id="art2">
+				<form method="POST" action="/supprimer/<%= id%>?_method=DELETE" >
+				    <button type="submit" >Confirmer</button>
+				    <a href="/" >Annuler</a>
+				</form>
+			</article>
+		</div>
+	</main>
+
+	<!-- le pied de page -->
+
+	<footer>
+		<%- include ('../../partials/footer.ejs') %>
+
+	</footer>
+</body>
+</html>

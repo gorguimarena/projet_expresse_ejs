@@ -36,18 +36,17 @@
 					<% data.forEach(function(film) { %>
 					
 						<tr>
-							<td><%= film.title %></td>
-							<td><%= film.year %></td>
-							<td><%= film.author %></td>
-							<td><%= film.genre %></td>
+							<td><%= film.titre %></td>
+							<td><%= film.anne %></td>
+							<td><%= film.auteur %></td>
+							<td><%= film.isSerie %></td>
 							<td>
-								<a href="">Détails</a>&nbsp;&nbsp;
-								<a href="/<%=film.id%>">Modifier</a>&nbsp;&nbsp;
-								<a href="">Supprimer</a>
+								<a href="/details/<%=film.id_film %>">Détails</a>&nbsp;&nbsp;
+								<a href="/modifier/<%=film.id_film%>">Modifier</a>&nbsp;&nbsp;
+								<a href="/supprimer/<%=film.id_film%>"  >Supprimer</a>
 							</td>
 						</tr>
 						<% }); %>
-						
 				</table>
 			</article>
 		</div>

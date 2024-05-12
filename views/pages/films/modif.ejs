@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<%- include ('../../partials/head.ejs') %>
-	
+
 </head>
 <body>
 	
@@ -14,7 +14,6 @@
 	<!-- le navbar de la page -->
 	<nav>
 		<%- include ('../../partials/nav.ejs') %>
-		
 	</nav>
 	
 	<!-- le contenu -->
@@ -25,18 +24,18 @@
 			<article id="art2">
 				
 				
-				<form action="/modif/<%= data.id %>?_method=PUT", method="post">
+				<form action="/modif/<%= data.id_film %>?_method=PUT", method="post">
 					<label>Titre: </label>
-					<input value="<%=data.title%>" type="text" placeholder="donnez le titre" name="titre" /><br>
+					<input value="<%=data.titre%>" type="text" placeholder="donnez le titre" name="titre" /><br>
 					
 					<label>Description: </label>
 					<input value="<%=data.description%>" type="text" placeholder="donnez la description" name="description" /><br>
 					
 					<label>Année: </label>
-					<input value="<%=data.year%>" type="text" placeholder="donnez l'année" name="annee"/><br>
+					<input value="<%=data.anne%>" type="text" placeholder="donnez l'année" name="annee"/><br>
 					
 					<label>Auteur: </label>
-					<input value="<%=data.author%>" type="text" placeholder="donnez l'auteur" name="auteur" /><br>
+					<input value="<%=data.auteur%>" type="text" placeholder="donnez l'auteur" name="auteur" /><br>
 					
 					<label>Genre: </label>
 					<select value="<%=data.genre%>" name="genre" id="genre">
@@ -49,8 +48,8 @@
 					
 					
 					<label>Catégorie film: </label>
-					<input type="radio" value="1" name="categorie" <% data.is_serie == 1 ? 'checked' : '' %> /> Film
-					<input type="radio" value="0" name="categorie" <% data.is_serie ==0 ? 'checked' : '' %> /> Série
+					<input type="radio" value="1" name="categorie" <% data.isSerie == 1 ? 'checked' : '' %> /> Film
+					<input type="radio" value="0" name="categorie" <% data.isSerie ==0 ? 'checked' : '' %> /> Série
 					<br><br><br><br><br>
 					
 					<button type="submit">Modifier</button>&nbsp;

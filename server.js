@@ -8,16 +8,20 @@ const PORT = 3000;
 const copyright = "Alioune DIOP 2024";
 
 //dire a express de considerer le dossier 'public' comme un dossier contenant des fichiers accessibles par un poste client
-app.use("/public", express.static("public"));
+app.use("/public",express.static("public"));
+
 
 //pour dire que les vues seront dans le dossiers ./views
 app.set("views", "./views");
 app.use(bodyParser.urlencoded({extended: false}));
+
 app.use(methodOverride('_method'))
 
 
+
+
 app.get("/", (req, res) => {
-  const sql = "select * from movie order by id desc";
+  const sql = "select * from mangas order by id_film desc";
   con.query(sql, (err,rows) => {
     if (err){
       throw err;
@@ -37,13 +41,13 @@ app.get('/ajout', (req, res, next) => {
   })
 });
 
-app.get('/:id', (req, res)=> {
+app.get('/modifier/:id', (req, res)=> {
   
   const id = req.params.id;
   console.log("id a modifier => " + id);
   
   //const sql = "select * from movie where id = " + id;
-  const sql = "select * from movie where id = ? ";
+  const sql = "select * from mangas where id_film = ? ";
   con.query(sql, id, (err, result) => {
     res.render('./pages/films/modif.ejs', {
       title: "Formulaire de modification de film",
@@ -57,15 +61,15 @@ app.get('/:id', (req, res)=> {
 
 app.post('/ajout', (req, res) => {
   const data = {
-    title: req.body.titre,
+    titre: req.body.titre,
     description: req.body.description,
-    year: req.body.annee,
-    author: req.body.auteur,
-    is_serie: req.body.categorie,
+    anne: req.body.annee,
+    auteur: req.body.auteur,
+    isSerie: req.body.categorie,
     genre: req.body.genre,
   }
   
-  const sql = "insert into movie set ?";
+  const sql = "insert into mangas set ?";
   con.query(sql, data, (err, result) => {
     if (err) throw err;
     
@@ -78,20 +82,58 @@ app.post('/ajout', (req, res) => {
 app.put("/modif/:id", (req, res) => {
   const id = req.params.id;
   const data = {
-    title: req.body.titre,
+    titre: req.body.titre,
     description: req.body.description,
-    year: req.body.annee,
-    author: req.body.auteur,
-    is_serie: req.body.categorie,
+    anne: req.body.annee,
+    auteur: req.body.auteur,
+    isSerie: req.body.categorie,
     genre: req.body.genre,
   } 
-  const sql = "update movie set ? where id = ?";
+  const sql = "update mangas set ? where id_film = ?";
   con.query(sql, [data, id], (err, result) => {
     if (err) throw err;
     
     res.redirect("/");
   });
 });
+
+//listener for delete a manga
+app.delete("/supprimer/:id",(req,res)=>{
+
+     const id = req.params.id;
+       const sql = "DELETE FROM mangas where id_film = ?";
+       con.query(sql, [id], (err, result) => {
+             if (err){
+                console.log(err);
+             }else{
+                //redirection vers la page principale
+                res.redirect("/");
+             }
+         });
+
+
+});
+
+app.get("/supprimer/:id",(req,res)=>{
+    const id = req.params.id;
+    res.render('./pages/films/confirmSup.ejs',{id,copyright,title:'Confirmation de la suppression'});
+
+});
+
+
+app.get("/details/:id",(req,res)=>{
+    const id=req.params.id;
+    const sql="select description from mangas where id_film = ?";
+    con.query(sql,[id],(error,resultat)=>{
+        if(error) throw error;
+        const row=resultat[0];
+        res.render('./pages/films/details.ejs',{row,copyright});
+
+    });
+
+});
+
+
 
 app.listen(PORT, () => {
   console.log("server listening on port: " + PORT);

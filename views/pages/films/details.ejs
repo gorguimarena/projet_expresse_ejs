@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include ('../../partials/head.ejs') %>
+
+</head>
+<body>
+
+	<!-- entete de la page -->
+	<header>
+		<%- include ('../../partials/header.ejs') %>
+	</header>
+
+	<!-- le navbar de la page -->
+	<nav>
+		<%- include ('../../partials/nav.ejs') %>
+	</nav>
+
+	<!-- le contenu -->
+	<main>
+
+
+		<div>
+			<article id="art2">
+
+				<h2>details</h2>
+				<p><%= row.description%></p>
+				<a href="/" >Retour</a>
+			</article>
+		</div>
+	</main>
+
+	<!-- le pied de page -->
+
+	<footer>
+		<%- include ('../../partials/footer.ejs') %>
+
+	</footer>
+</body>
+</html>
