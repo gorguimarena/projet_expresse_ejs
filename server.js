@@ -114,13 +114,14 @@ app.delete("/supprimer/:id",(req,res)=>{
 
 });
 
+//listener pour la suppression de mangas
 app.get("/supprimer/:id",(req,res)=>{
     const id = req.params.id;
     res.render('./pages/films/confirmSup.ejs',{id,copyright,title:'Confirmation de la suppression'});
 
 });
 
-
+//methode pour les details
 app.get("/details/:id",(req,res)=>{
     const id=req.params.id;
     const sql="select description from mangas where id_film = ?";
