@@ -31,7 +31,7 @@ CREATE TABLE `mangas` (
   `genre` varchar(60) DEFAULT NULL,
   `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_film`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,8 @@ LOCK TABLES `mangas` WRITE;
 INSERT INTO `mangas` VALUES
 ('demon slayer','marena','2013',10,NULL,'ACTION','dfreedddd'),
 ('demon slayer','jo togame','2014',11,0,'ANIME','awesome'),
-('hunter','jo togame','2022',12,0,'ANIME','awesome');
+('hunter','gorgui','2022',12,0,'ACTION','awesome'),
+('Wind breaker','Not know','2024',13,0,'ACTION','C\'est un manga de baston tres souhhaite');
 /*!40000 ALTER TABLE `mangas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-12 16:02:27
+-- Dump completed on 2024-05-14 20:47:24
